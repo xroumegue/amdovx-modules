@@ -111,3 +111,6 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 else()
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdata-sections")
 endif()
+install ( TARGETS vx_ext_cv
+		ARCHIVE DESTINATION bin
+		LIBRARY DESTINATION lib )
