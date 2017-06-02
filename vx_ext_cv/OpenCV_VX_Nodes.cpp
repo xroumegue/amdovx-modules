@@ -1636,3 +1636,31 @@ VX_API_ENTRY vx_node VX_API_CALL vxExtCvNode_buildOpticalFlowPyramid(vx_graph gr
 		dimof(params));
 
 }
+
+/************************************************************************************************************
+houghHarrisPLine C Function
+*************************************************************************************************************/
+VX_API_ENTRY vx_node VX_API_CALL vxExtCvNode_houghHarrisLine(vx_graph graph, vx_image input, vx_array lines, vx_float32 rho, vx_float32 theta, vx_int32 threshold, vx_float32 minLineLength, vx_float32 maxLineGap, vx_scalar num_lines)
+{
+    vx_scalar krho = vxCreateScalar(vxGetContext((vx_reference)graph), VX_TYPE_FLOAT32, &rho);
+    vx_scalar ktheta = vxCreateScalar(vxGetContext((vx_reference)graph), VX_TYPE_FLOAT32, &theta);
+    vx_scalar kthreshold = vxCreateScalar(vxGetContext((vx_reference)graph), VX_TYPE_INT32, &threshold);
+    vx_scalar kminLineLength = vxCreateScalar(vxGetContext((vx_reference)graph), VX_TYPE_FLOAT32, &minLineLength);
+    vx_scalar kmaxLineGap = vxCreateScalar(vxGetContext((vx_reference)graph), VX_TYPE_FLOAT32, &maxLineGap);
+
+    vx_reference params[] = {
+	    (vx_reference)input,
+	    (vx_reference)lines,
+	    (vx_reference)krho,
+	    (vx_reference)ktheta,
+	    (vx_reference)kthreshold,
+	    (vx_reference)kminLineLength,
+	    (vx_reference)kmaxLineGap,
+	    (vx_reference)num_lines,
+    };
+
+    return vxCreateNodeByStructure(graph,
+		VX_KERNEL_EXT_CV_HOUGHLINESP,
+		params,
+		dimof(params));
+}

@@ -101,6 +101,7 @@ vx_status get_kernels_to_publish()
 	STATUS_ERROR_CHECK(ADD_KERENEL(CV_transpose_Register));
 	STATUS_ERROR_CHECK(ADD_KERENEL(CV_warpAffine_Register));
 	STATUS_ERROR_CHECK(ADD_KERENEL(CV_warpPerspective_Register));
+	STATUS_ERROR_CHECK(ADD_KERENEL(CV_houghLinesP_Register));
 
 #if USE_OPENCV_CONTRIB
 	STATUS_ERROR_CHECK(ADD_KERENEL(CV_SIFT_compute_Register));

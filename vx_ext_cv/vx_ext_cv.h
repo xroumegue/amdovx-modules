@@ -351,6 +351,10 @@ extern "C" {
 		   * \brief The OpenCV cornerMinEigenVal function kernel. Kernel name is "org.opencv.cornermineigenVal".
 		   */
 		   VX_KERNEL_EXT_CV_CORNER_MIN_EIGEN_VAL = VX_KERNEL_BASE(VX_ID_AMD, VX_LIBRARY_EXT_CV) + 0x202,
+		   /*!
+		   * \brief The OpenCV HoughLinesP function kernel. Kernel name is "org.opencv.houghlinesp".
+		   */
+		   VX_KERNEL_EXT_CV_HOUGHLINESP = VX_KERNEL_BASE(VX_ID_AMD, VX_LIBRARY_EXT_CV) + 0x203,
 
 	};
 
