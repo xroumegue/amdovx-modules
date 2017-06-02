@@ -90,6 +90,7 @@ list (APPEND SOURCES
 	OpenCV_VX_Nodes.cpp
 	OpenCV_warpAffine.cpp
 	OpenCV_warpPerspective.cpp
+	OpenCV_houghLinesP.cpp
 	publishkernels.cpp
 	)
 
@@ -112,7 +113,7 @@ else()
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdata-sections")
 endif()
 
-install (FILES vx_ext_cv.h DESTINATION include)
+install (FILES OpenCV_VX_Functions.h DESTINATION include)
 install ( TARGETS vx_ext_cv
 		ARCHIVE DESTINATION lib
 		LIBRARY DESTINATION lib )

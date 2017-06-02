@@ -20,9 +20,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-
-#include"publishkernels.h"
-
 // a very useful macro
 #ifndef dimof
 #define dimof(x) (sizeof(x)/sizeof(x[0]))
@@ -729,7 +726,7 @@ extern "C" {
 	* \retval vx_node A node reference. Any possible errors preventing a successful creation should be checked using <tt>\ref vxGetStatus</tt>*/
 	VX_API_ENTRY vx_node VX_API_CALL vxExtCvNode_Sobel(vx_graph graph, vx_image input, vx_image output, vx_int32 ddepth, vx_int32  dx, vx_int32 dy, vx_int32 Ksize, vx_float32 scale, vx_float32 delta, vx_int32 bordertype);
 
-
+	VX_API_ENTRY vx_node VX_API_CALL vxExtCvNode_houghHarrisLine(vx_graph graph, vx_image input, vx_array lines, vx_float32 rho, vx_float32 theta, vx_int32 threshold, vx_float32 minLineLength, vx_float32 maxLineGap, vx_scalar num_lines);
 #ifdef __cplusplus
 }
 #endif

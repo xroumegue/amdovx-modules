@@ -53,6 +53,7 @@ int VX_to_CV_MATRIX(Mat**, vx_matrix);
 int CV_to_VX_Pyramid(vx_pyramid, vector<Mat>);
 int CV_to_VX_Image(vx_image, Mat*);
 
+int CV_to_VX_lines(vector<Vec4i>, vx_array);
 int CV_to_VX_keypoints(vector<KeyPoint>, vx_array);
 int CVPoints2f_to_VX_keypoints(vector<Point2f>, vx_array);
 int CV_DESP_to_VX_DESP(Mat, vx_array, int);

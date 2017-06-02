@@ -170,6 +170,36 @@ bool sortbysize_CV(const KeyPoint &lhs, const KeyPoint &rhs)
 	return lhs.size < rhs.size;
 }
 
+int CV_to_VX_lines(vector<Vec4i> lines, vx_array array)
+{
+	vx_status status = VX_SUCCESS;
+	vx_size size = 0;
+	/* FIXME: vx_line_t not yet defined until ovx 1.2*/
+	vector<vx_rectangle_t> lines_VX;
+
+	STATUS_ERROR_CHECK(vxQueryArray(array, VX_ARRAY_ATTRIBUTE_CAPACITY, &size, sizeof(size)));
+	int i, j = 0;
+	size_t S = lines.size();
+	lines_VX.resize(S);
+	for (vector<Vec4i>::const_iterator i = lines.begin(); i != lines.end(); i++) {
+		lines_VX[j].start_x = lines[j][0];
+		lines_VX[j].start_y = lines[j][1];
+
+		lines_VX[j].end_x = lines[j][2];
+		lines_VX[j].end_y = lines[j][3];
+		j++;
+	}
+
+	vx_rectangle_t * rectangle_ptr = &lines_VX[0]; size = min(size, S);
+	status = vxTruncateArray(array, 0);
+	if (status){ vxAddLogEntry((vx_reference)array, status, "CV_to_VX_lines ERROR: vxTruncateArray failed\n"); return status; }
+	status = vxAddArrayItems(array, size, rectangle_ptr, sizeof(vx_rectangle_t));
+	if (status){ vxAddLogEntry((vx_reference)array, status, "CV_to_VX_keypoints ERROR: vxAddArrayItems failed\n"); return status; }
+
+	return status;
+
+
+}
 /************************************************************************************************************
 OpenCV Keypoints to OpenVX Keypoints
 *************************************************************************************************************/

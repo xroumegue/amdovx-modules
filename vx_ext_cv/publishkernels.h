@@ -97,6 +97,7 @@ vx_status CV_threshold_Register(vx_context);
 vx_status CV_transpose_Register(vx_context);
 vx_status CV_warpAffine_Register(vx_context);
 vx_status CV_warpPerspective_Register(vx_context);
+vx_status CV_houghLinesP_Register(vx_context);
 
 #if USE_OPENCV_CONTRIB
 vx_status CV_SIFT_compute_Register(vx_context);
@@ -180,7 +181,8 @@ vx_status CV_SURF_detect_Register(vx_context);
 #define VX_KERNEL_EXT_CV_countNonZero_NAME					"org.opencv.countnonzero"
 #define VX_KERNEL_EXT_CV_norm_NAME							"org.opencv.norm"
 
-
+//Hough Detectors
+#define VX_KERNEL_EXT_CV_HOUGHLINES_NAME	"org.opencv.houghlinesp"
 
 #endif //_AMDVX_EXT__PUBLISH_KERNELS_H_
 
