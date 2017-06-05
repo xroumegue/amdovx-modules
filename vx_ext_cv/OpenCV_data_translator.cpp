@@ -193,8 +193,10 @@ int CV_to_VX_lines(vector<Vec4i> lines, vx_array array)
 	vx_rectangle_t * rectangle_ptr = &lines_VX[0]; size = min(size, S);
 	status = vxTruncateArray(array, 0);
 	if (status){ vxAddLogEntry((vx_reference)array, status, "CV_to_VX_lines ERROR: vxTruncateArray failed\n"); return status; }
-	status = vxAddArrayItems(array, size, rectangle_ptr, sizeof(vx_rectangle_t));
-	if (status){ vxAddLogEntry((vx_reference)array, status, "CV_to_VX_keypoints ERROR: vxAddArrayItems failed\n"); return status; }
+	if (size > 0) {
+		status = vxAddArrayItems(array, size, rectangle_ptr, sizeof(vx_rectangle_t));
+		if (status){ vxAddLogEntry((vx_reference)array, status, "CV_to_VX_lines ERROR: vxAddArrayItems failed\n"); return status; }
+	}
 
 	return status;
 
